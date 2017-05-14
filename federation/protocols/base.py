@@ -1,10 +1,7 @@
 import logging
 
-
 # Should be implemented by submodules
 PROTOCOL_NAME = None
-PROTOCOL_NS = None
-USER_AGENT = None
 
 
 def identify_payload(payload):
@@ -19,21 +16,19 @@ def identify_payload(payload):
     raise NotImplementedError("Implement in protocol module")
 
 
-class BaseProtocol(object):
+class BaseProtocol():
 
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger("federation")
 
     def build_send(self, *args, **kwargs):
         """Build a payload for sending.
 
         Args:
+            entity (obj)            - Entity to send
             from_user (obj)         - The user object who is sending
                                       Must contain attributes `handle` and `private_key`
-            to_user (obj)           - The user object we are sending to
+            to_user (obj, optional) - The user object we are sending to
                                       Must contain attribute `key` (public key)
-            generator (function)    - Generator function to generate object for sending
-
-
         """
         raise NotImplementedError("Implement in subclass")
 

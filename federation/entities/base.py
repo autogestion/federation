@@ -16,6 +16,10 @@ class BaseEntity(object):
     _source_protocol = ""
     _source_object = None
     _sender_key = ""
+
+    # URI for this entity, identifying it on the network
+    uri = ""
+    # Signature for verifying content authorship
     signature = ""
 
     def __init__(self, *args, **kwargs):
@@ -278,6 +282,7 @@ class Profile(CreatedAtMixin, HandleMixin, OptionalRawContentMixin, PublicMixin,
     nsfw = False
     tag_list = []
     public_key = ""
+    url = ""
 
     _allowed_children = (Image,)
 

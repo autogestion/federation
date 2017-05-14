@@ -10,6 +10,7 @@ cache:
 install:
   - pip install -r dev-requirements.txt -U
   - python setup.py develop
+  - pip install -e git+git@github.com:jaywink/activipy.git@master#egg=activipy==0.3.dev
   - pip freeze
 script: py.test --cov=./
 after_success:
